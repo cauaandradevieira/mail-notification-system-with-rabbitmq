@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 @Table(name = "contact")
@@ -26,4 +27,8 @@ public class Contact {
 
     @Column(name = "updated_at")
     private Instant updatedAt;
+
+    @OneToMany(mappedBy = "contact")
+    private List<ContactGroup> contactGroupList;
+
 }
