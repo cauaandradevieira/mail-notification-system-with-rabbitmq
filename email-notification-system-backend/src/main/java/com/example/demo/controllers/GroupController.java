@@ -24,40 +24,26 @@ public class GroupController {
 
     private final GroupService groupService;
     private final ContactGroupService contactGroupService;
-    private final GroupMapper groupMapper;
 
     @PostMapping
-    public ResponseEntity<Void> create(
+    public ResponseEntity<GroupResponse> create(
             @Valid @RequestBody GroupRequest request) {
 
-        Group group = groupMapper.toEntity(request);
+        GroupResponse response = groupService.create(request);
 
-        group.setName(request.name());
-
-        groupService.create(group);
-
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping
     public ResponseEntity<List<GroupResponse>> findAll() {
-
-        List<Group> groups = groupService.findAll();
-
-        List<GroupResponse> response = groupMapper.toDtoList(groups);
-
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(groupService.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<GroupResponse> findById(
             @PathVariable Long id) {
 
-        Group group = groupService.findById(id);
-
-        GroupResponse response = groupMapper.toDto(group);
-
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(groupService.findById(id));
     }
 
     @GetMapping("/{id}/contacts")
@@ -69,22 +55,16 @@ public class GroupController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(
+    public ResponseEntity<GroupResponse> update(
             @PathVariable Long id,
             @Valid @RequestBody GroupRequest request) {
 
-        Group group = groupMapper.toEntity(request);
-
-        groupService.update(id, group);
-
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(groupService.update(id, request));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id)
-    {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         groupService.delete(id);
-
         return ResponseEntity.noContent().build();
     }
 }
