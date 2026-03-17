@@ -23,7 +23,6 @@ public class EmailController {
     @PostMapping()
     public ResponseEntity<?> send(@Valid @RequestBody EmailRequest request)
     {
-        log.info("passando no metodo send");
         emailProducer.sendToQueue(request);
 
         return ResponseEntity.ok().build();
