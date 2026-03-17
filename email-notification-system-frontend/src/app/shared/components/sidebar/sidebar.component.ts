@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { SidebarItem, SidebarItemComponent } from './sidebar-item/sidebar-item.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,10 +10,14 @@ import { SidebarItem, SidebarItemComponent } from './sidebar-item/sidebar-item.c
 })
 export class SidebarComponent 
 {
+
+  constructor(private router: Router) {}
+
   items = signal<SidebarItem[]>([
-    { label: 'Dashboard', routerLink: '/dashboard', active: false },
-    { label: 'Produtos', routerLink: '/produtos' , active: false },
-    { label: 'Clientes', routerLink: '/clientes' , active: false }
+    { label: 'Dashboard', routerLink: '/dashboard', active: true, icon: "fa-solid fa-gauge"},
+    { label: 'Email', routerLink: '/email' , active: false, icon: "fa-solid fa-envelope"},
+    { label: 'Contact', routerLink: '/contact' , active: false, icon: "fa-solid fa-user"},
+    { label: 'Contact Group', routerLink: '/group' , active: false, icon: "fa-solid fa-address-book"  }
   ]);
 
   public setActiveItem(itemName: string) {
@@ -22,5 +27,9 @@ export class SidebarComponent
         active: item.label === itemName
       }))
     )
+    
+    const item = this.items().find(item => item.active);
+    console.log(item);
+    this.router.navigate([item?.routerLink]);
   }
 }

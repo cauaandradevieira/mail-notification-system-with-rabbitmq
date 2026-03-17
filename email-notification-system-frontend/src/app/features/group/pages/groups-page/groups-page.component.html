@@ -1,0 +1,114 @@
+<div>
+    <div><span class="text-2xl font-bold text-gray-600 mb-2">Contact</span></div>
+    <div class="mt-3 text-gray-600"><span>Bem-vindo de volta! Aqui está seu resumo</span></div>
+</div>
+
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-5 mt-10">
+    <!-- Template 1 -->
+    <button (click)="openModal()">
+        <div
+            class="border border-indigo-300 rounded-2xl shadow-sm hover:shadow-lg transition bg-white p-6 max-w-md cursor-pointer">
+            <!-- Cabeçalho do Grupo -->
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-3">
+                    <!-- Ícone do grupo -->
+                    <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <!-- Nome do Grupo e quantidade -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Marketing Digital</h3>
+                        <p class="text-sm text-gray-500">12 contatos</p>
+                    </div>
+                </div>
+                <!-- Status do grupo -->
+                <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Ativo</span>
+            </div>
+
+            <!-- Informações do Grupo -->
+            <div class="space-y-2 mb-2">
+                <!-- Email do grupo -->
+                <div class="flex items-center text-sm">
+                    <span class="text-gray-500 w-20">Email:</span>
+                    <span class="text-gray-800 font-medium">marketing&#64;empresa.com</span>
+                </div>
+
+                <!-- Descrição -->
+                <div class="flex items-start text-sm">
+                    <span class="text-gray-500 w-20">Descrição:</span>
+                    <span class="text-gray-600">Equipe de marketing e comunicações</span>
+                </div>
+
+            </div>
+
+            <!-- Data de criação -->
+            <div class="flex items-center text-xs text-gray-400 pt-2">
+                <span>Criado em: 15/03/2024</span>
+            </div>
+        </div>
+    </button>
+
+    <div class="border border-green-300 rounded-2xl shadow-sm hover:shadow-lg transition bg-white p-6 max-w-md">
+        <!-- Cabeçalho do Grupo -->
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-3">
+                <!-- Ícone do grupo -->
+                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z">
+                        </path>
+                    </svg>
+                </div>
+                <!-- Nome do Grupo e quantidade -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Marketing Digital</h3>
+                    <p class="text-sm text-gray-500">12 contatos</p>
+                </div>
+            </div>
+            <!-- Status do grupo -->
+            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Ativo</span>
+        </div>
+
+        <!-- Informações do Grupo -->
+        <div class="space-y-3">
+            <!-- Email do grupo -->
+            <div class="flex items-center text-sm">
+                <span class="text-gray-500 w-20">Email:</span>
+                <span class="text-gray-800 font-medium">marketing&#64;empresa.com</span>
+            </div>
+
+            <!-- Descrição -->
+            <div class="flex items-start text-sm">
+                <span class="text-gray-500 w-20">Descrição:</span>
+                <span class="text-gray-600">Equipe de marketing e comunicações</span>
+            </div>
+
+        </div>
+        <!-- Data de criação -->
+        <div class="flex items-center text-xs text-gray-400 pt-2">
+            <span>Criado em: 15/03/2024</span>
+        </div>
+    </div>
+
+</div>
+
+<!-- app.component.html -->
+<button (click)="openModal()">Abrir Modal</button>
+
+<app-modal [title]="'Meu Modal'" [showModal]="showModal" (closeModal)="closeModal()">
+    <!-- Conteúdo do modal -->
+    <p>Este é o conteúdo do modal!</p>
+
+    <!-- Botões do footer -->
+    <div footer>
+        <button (click)="closeModal()">Cancelar</button>
+        <button (click)="closeModal()">Confirmar</button>
+    </div>
+</app-modal>
+

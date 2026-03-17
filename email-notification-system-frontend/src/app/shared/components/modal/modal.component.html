@@ -1,0 +1,22 @@
+<!-- modal.component.html -->
+@if (showModal) 
+{
+    <div class="modal-overlay" (click)="close()">
+        <div class="modal-container" (click)="$event.stopPropagation()">
+          <div class="modal-header">
+            <h3>{{ title }}</h3>
+            <button class="close-btn" (click)="close()">&times;</button>
+          </div>
+          
+          <div class="modal-body">
+            <ng-content></ng-content>
+          </div>
+          
+          <div class="modal-footer">
+            <ng-content select="[footer]"></ng-content>
+          </div>
+        </div>
+      </div>
+}
+
+

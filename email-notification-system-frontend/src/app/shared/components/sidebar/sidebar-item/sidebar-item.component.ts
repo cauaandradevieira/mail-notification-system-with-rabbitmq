@@ -1,10 +1,12 @@
-import { Component, EventEmitter, Input, input, Output, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { RouterLink } from "@angular/router";
 
 export interface SidebarItem
 {
   label: string,
   routerLink: string,
-  active: boolean
+  active: boolean,
+  icon: string
 }
 
 @Component({
@@ -17,9 +19,9 @@ export class SidebarItemComponent {
   @Input() item!: SidebarItem;
   @Output() onClickedEmit = new EventEmitter<string>();
   
-
   onClicked()
   {
     this.onClickedEmit.emit(this.item.label);
+    
   }
 }

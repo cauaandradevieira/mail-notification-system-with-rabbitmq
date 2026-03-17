@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,808 +8,930 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
         .modal-transition {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
     </style>
 </head>
+
 <body class="bg-gray-50">
 
-<!-- ==================== LAYOUT PRINCIPAL ==================== -->
-<div class="flex min-h-screen">
-    
-    <!-- ========== SIDEBAR ========== -->
-    <aside class="w-64 bg-white border-r border-gray-200 fixed h-full">
-        <!-- Logo -->
-        <div class="h-16 flex items-center px-6 border-b border-gray-200">
-            <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
+    <!-- ==================== LAYOUT PRINCIPAL ==================== -->
+    <div class="flex min-h-screen">
+
+        <!-- ========== SIDEBAR ========== -->
+        <aside class="w-64 bg-white border-r border-gray-200 fixed h-full">
+            <!-- Logo -->
+            <div class="h-16 flex items-center px-6 border-b border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <div
+                        class="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <span class="font-bold text-xl text-gray-800">MailMaster</span>
                 </div>
-                <span class="font-bold text-xl text-gray-800">MailMaster</span>
             </div>
-        </div>
 
-        <!-- Menu -->
-        <nav class="p-4 space-y-1">
-            <a href="#" onclick="showDashboard()" class="flex items-center space-x-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition bg-blue-50 text-blue-600">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                </svg>
-                <span>Dashboard</span>
-            </a>
+            <!-- Menu -->
+            <nav class="p-4 space-y-1">
+                <a href="#" onclick="showDashboard()"
+                    class="flex items-center space-x-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition bg-blue-50 text-blue-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
 
-            <a href="#" onclick="showComposer()" class="flex items-center space-x-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                </svg>
-                <span>Novo E-mail</span>
-            </a>
+                <a href="#" onclick="showComposer()"
+                    class="flex items-center space-x-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    <span>Novo E-mail</span>
+                </a>
 
-            <a href="#" onclick="showContacts()" class="flex items-center space-x-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                </svg>
-                <span>Contatos</span>
-            </a>
+                <a href="#" onclick="showContacts()"
+                    class="flex items-center space-x-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                        </path>
+                    </svg>
+                    <span>Contatos</span>
+                </a>
 
-            <a href="#" onclick="showTemplates()" class="flex items-center space-x-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
-                </svg>
-                <span>Templates</span>
-            </a>
+                <a href="#" onclick="showTemplates()"
+                    class="flex items-center space-x-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
+                        </path>
+                    </svg>
+                    <span>Templates</span>
+                </a>
 
-            <a href="#" onclick="showCampaigns()" class="flex items-center space-x-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
-                </svg>
-                <span>Campanhas</span>
-            </a>
-        </nav>
+                <a href="#" onclick="showCampaigns()"
+                    class="flex items-center space-x-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-100 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                    </svg>
+                    <span>Campanhas</span>
+                </a>
+            </nav>
 
-        <!-- Gmail Status -->
-        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
-            <div class="bg-green-50 border border-green-200 rounded-lg p-3 cursor-pointer" onclick="showGmailModal()">
-                <div class="flex items-center space-x-3">
-                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <div class="flex-1">
-                        <p class="text-sm font-medium text-green-800">Conectado ao Gmail</p>
-                        <p class="text-xs text-green-600">joao.silva@gmail.com</p>
+            <!-- Gmail Status -->
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-3 cursor-pointer"
+                    onclick="showGmailModal()">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-green-800">Conectado ao Gmail</p>
+                            <p class="text-xs text-green-600">joao.silva@gmail.com</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </aside>
+        </aside>
 
-    <!-- ========== CONTEÚDO PRINCIPAL ========== -->
-    <main class="ml-64 flex-1 p-8" id="mainContent">
-        <!-- O conteúdo será dinâmico via JavaScript -->
-    </main>
-</div>
-
-<!-- ==================== MODAIS ==================== -->
-
-<!-- MODAL: Conexão Gmail -->
-<div id="gmailModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden modal-transition">
-    <div class="bg-white rounded-xl max-w-md w-full mx-4 p-6">
-        <div class="text-center mb-6">
-            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                </svg>
-            </div>
-            <h2 class="text-xl font-bold text-gray-800">Conectar com Gmail</h2>
-            <p class="text-gray-600 text-sm mt-2">Conecte sua conta do Gmail para começar a enviar e-mails</p>
-        </div>
-
-        <div class="bg-gray-50 rounded-lg p-4 mb-6">
-            <h3 class="text-sm font-medium text-gray-700 mb-3">Permissões necessárias:</h3>
-            <ul class="space-y-2">
-                <li class="flex items-center text-sm text-gray-600">
-                    <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Enviar e-mails em seu nome
-                </li>
-                <li class="flex items-center text-sm text-gray-600">
-                    <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Ler seus contatos
-                </li>
-                <li class="flex items-center text-sm text-gray-600">
-                    <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Gerenciar rascunhos
-                </li>
-            </ul>
-        </div>
-
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-6">
-            <div class="flex items-start space-x-2">
-                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <p class="text-sm text-blue-800">Você será redirecionado para o Google para autorizar o acesso.</p>
-            </div>
-        </div>
-
-        <div class="flex space-x-3">
-            <button onclick="hideModal('gmailModal')" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
-                Cancelar
-            </button>
-            <button class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center justify-center space-x-2">
-                <svg class="w-5 h-5" viewBox="0 0 24 24">
-                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                </svg>
-                <span>Continuar com Gmail</span>
-            </button>
-        </div>
+        <!-- ========== CONTEÚDO PRINCIPAL ========== -->
+        <main class="ml-64 flex-1 p-8" id="mainContent">
+            <!-- O conteúdo será dinâmico via JavaScript -->
+        </main>
     </div>
-</div>
 
-<!-- MODAL: Novo Contato -->
-<div id="contactModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden modal-transition">
-    <div class="bg-white rounded-xl max-w-md w-full mx-4 p-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">Novo Contato</h2>
-        
-        <div class="space-y-4">
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Nome completo</label>
-                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Digite o nome">
-            </div>
-            
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
-                <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="email@exemplo.com">
-            </div>
-            
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Empresa</label>
-                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Opcional">
-            </div>
-            
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Grupo</label>
-                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option>Clientes</option>
-                    <option>Leads</option>
-                    <option>Newsletter</option>
-                    <option>Parceiros</option>
-                </select>
-            </div>
-        </div>
+    <!-- ==================== MODAIS ==================== -->
 
-        <div class="flex justify-end space-x-3 mt-6">
-            <button onclick="hideModal('contactModal')" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
-                Cancelar
-            </button>
-            <button onclick="hideModal('contactModal')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                Salvar Contato
-            </button>
-        </div>
-    </div>
-</div>
+    <!-- MODAL: Conexão Gmail -->
+    <div id="gmailModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 modal-transition">
+        <div class="bg-white rounded-xl max-w-md w-full mx-4 p-6">
+            <div class="text-center mb-6">
+                <div
+                    class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                </div>
+                <h2 class="text-xl font-bold text-gray-800">Conectar com Gmail</h2>
+                <p class="text-gray-600 text-sm mt-2">Conecte sua conta do Gmail para começar a enviar e-mails</p>
+            </div>
 
-<!-- MODAL: Estatísticas da Campanha -->
-<div id="campaignStatsModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden modal-transition">
-    <div class="bg-white rounded-xl max-w-4xl w-full mx-4 p-6 max-h-[90vh] overflow-y-auto">
-        <div class="flex justify-between items-center mb-6">
-            <h2 class="text-xl font-bold text-gray-800">Newsletter Mensal - Estatísticas</h2>
-            <button onclick="hideModal('campaignStatsModal')" class="text-gray-400 hover:text-gray-600">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-        </div>
+            <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                <h3 class="text-sm font-medium text-gray-700 mb-3">Permissões necessárias:</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center text-sm text-gray-600">
+                        <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        Enviar e-mails em seu nome
+                    </li>
+                    <li class="flex items-center text-sm text-gray-600">
+                        <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        Ler seus contatos
+                    </li>
+                    <li class="flex items-center text-sm text-gray-600">
+                        <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        Gerenciar rascunhos
+                    </li>
+                </ul>
+            </div>
 
-        <!-- Stats Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div class="bg-gray-50 p-4 rounded-lg">
-                <p class="text-sm text-gray-600">Enviados</p>
-                <p class="text-2xl font-bold text-gray-800">2,847</p>
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-6">
+                <div class="flex items-start space-x-2">
+                    <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-sm text-blue-800">Você será redirecionado para o Google para autorizar o acesso.</p>
+                </div>
             </div>
-            <div class="bg-gray-50 p-4 rounded-lg">
-                <p class="text-sm text-gray-600">Abertos</p>
-                <p class="text-2xl font-bold text-gray-800">1,951</p>
-                <p class="text-xs text-green-600">68.5%</p>
-            </div>
-            <div class="bg-gray-50 p-4 rounded-lg">
-                <p class="text-sm text-gray-600">Cliques</p>
-                <p class="text-2xl font-bold text-gray-800">892</p>
-                <p class="text-xs text-green-600">31.3%</p>
-            </div>
-            <div class="bg-gray-50 p-4 rounded-lg">
-                <p class="text-sm text-gray-600">Reclamações</p>
-                <p class="text-2xl font-bold text-gray-800">3</p>
-                <p class="text-xs text-red-600">0.1%</p>
-            </div>
-        </div>
 
-        <!-- Gráfico Simulado -->
-        <div class="mb-6">
-            <h3 class="font-semibold text-gray-800 mb-3">Aberturas por horário</h3>
-            <div class="h-40 flex items-end space-x-2">
-                <div class="flex-1 flex flex-col items-center">
-                    <div class="w-full bg-blue-500 rounded-t-lg" style="height: 40px"></div>
-                    <span class="text-xs mt-2">00h</span>
-                </div>
-                <div class="flex-1 flex flex-col items-center">
-                    <div class="w-full bg-blue-500 rounded-t-lg" style="height: 65px"></div>
-                    <span class="text-xs mt-2">04h</span>
-                </div>
-                <div class="flex-1 flex flex-col items-center">
-                    <div class="w-full bg-blue-500 rounded-t-lg" style="height: 120px"></div>
-                    <span class="text-xs mt-2">08h</span>
-                </div>
-                <div class="flex-1 flex flex-col items-center">
-                    <div class="w-full bg-blue-500 rounded-t-lg" style="height: 180px"></div>
-                    <span class="text-xs mt-2">12h</span>
-                </div>
-                <div class="flex-1 flex flex-col items-center">
-                    <div class="w-full bg-blue-500 rounded-t-lg" style="height: 150px"></div>
-                    <span class="text-xs mt-2">16h</span>
-                </div>
-                <div class="flex-1 flex flex-col items-center">
-                    <div class="w-full bg-blue-500 rounded-t-lg" style="height: 90px"></div>
-                    <span class="text-xs mt-2">20h</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Links mais clicados -->
-        <div>
-            <h3 class="font-semibold text-gray-800 mb-3">Links mais clicados</h3>
-            <div class="space-y-2">
-                <div class="flex justify-between p-3 bg-gray-50 rounded">
-                    <span class="text-sm">https://seusite.com/promocao</span>
-                    <span class="text-sm font-bold">342 cliques</span>
-                </div>
-                <div class="flex justify-between p-3 bg-gray-50 rounded">
-                    <span class="text-sm">https://seusite.com/novidades</span>
-                    <span class="text-sm font-bold">187 cliques</span>
-                </div>
+            <div class="flex space-x-3">
+                <button onclick="hideModal('gmailModal')"
+                    class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                    Cancelar
+                </button>
+                <button
+                    class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center justify-center space-x-2">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24">
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                            fill="#4285F4" />
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                            fill="#34A853" />
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                            fill="#FBBC05" />
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                            fill="#EA4335" />
+                    </svg>
+                    <span>Continuar com Gmail</span>
+                </button>
             </div>
         </div>
     </div>
-</div>
 
-<!-- ==================== CONTEÚDOS DINÂMICOS ==================== -->
+    <!-- MODAL: Novo Contato -->
+    <div id="contactModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden modal-transition">
+        <div class="bg-white rounded-xl max-w-md w-full mx-4 p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Novo Contato</h2>
 
-<!-- Dashboard -->
-<template id="dashboardTemplate">
-    <div>
-        <h1 class="text-2xl font-bold text-gray-800 mb-2">Dashboard</h1>
-        <p class="text-gray-600 mb-6">Bem-vindo de volta! Aqui está seu resumo</p>
-
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <span class="text-sm font-medium text-green-600 bg-green-100 px-2 py-1 rounded">+12.5%</span>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-800">15,243</h3>
-                <p class="text-gray-600 text-sm">E-mails Enviados</p>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                        </svg>
-                    </div>
-                    <span class="text-sm font-medium text-green-600 bg-green-100 px-2 py-1 rounded">+5.2%</span>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-800">68.5%</h3>
-                <p class="text-gray-600 text-sm">Taxa de Abertura</p>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                        </svg>
-                    </div>
-                    <span class="text-sm font-medium text-green-600 bg-green-100 px-2 py-1 rounded">+32</span>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-800">3,482</h3>
-                <p class="text-gray-600 text-sm">Contatos</p>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
-                        </svg>
-                    </div>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-800">5</h3>
-                <p class="text-gray-600 text-sm">Campanhas Ativas</p>
-            </div>
-        </div>
-
-        <!-- Recent Activity -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <h3 class="font-semibold text-gray-800 mb-4">Atividade Recente</h3>
             <div class="space-y-4">
-                <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-medium">Newsletter Mensal</p>
-                            <p class="text-sm text-gray-600">Enviado há 2 dias • 1,245 abertos</p>
-                        </div>
-                    </div>
-                    <span class="text-sm text-green-600">68%</span>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Nome completo</label>
+                    <input type="text"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Digite o nome">
                 </div>
-                
-                <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-medium">Promoção Verão</p>
-                            <p class="text-sm text-gray-600">Enviado há 5 dias • 2,801 abertos</p>
-                        </div>
-                    </div>
-                    <span class="text-sm text-green-600">72%</span>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+                    <input type="email"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="email@exemplo.com">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Empresa</label>
+                    <input type="text"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Opcional">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Grupo</label>
+                    <select
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option>Clientes</option>
+                        <option>Leads</option>
+                        <option>Newsletter</option>
+                        <option>Parceiros</option>
+                    </select>
                 </div>
             </div>
-        </div>
-    </div>
-</template>
 
-<!-- Compositor de E-mail -->
-<template id="composerTemplate">
-    <div>
-        <div class="flex justify-between items-center mb-6">
-            <h1 class="text-2xl font-bold text-gray-800">Novo E-mail</h1>
-            <div class="flex space-x-3">
-                <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
-                    </svg>
-                    <span>Salvar Rascunho</span>
+            <div class="flex justify-end space-x-3 mt-6">
+                <button onclick="hideModal('contactModal')"
+                    class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                    Cancelar
                 </button>
-                <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                    </svg>
-                    <span>Enviar</span>
+                <button onclick="hideModal('contactModal')"
+                    class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                    Salvar Contato
                 </button>
             </div>
         </div>
+    </div>
 
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 max-w-4xl">
-            <!-- From -->
-            <div class="mb-4 p-3 bg-gray-50 rounded-lg">
-                <div class="flex items-center space-x-3">
-                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=0ea5e9&color=fff" class="w-8 h-8 rounded-full">
-                    <div>
-                        <p class="text-sm font-medium">João Silva</p>
-                        <p class="text-xs text-gray-600">joao.silva@gmail.com (via Gmail)</p>
+    <!-- MODAL: Estatísticas da Campanha -->
+    <div id="campaignStatsModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden modal-transition">
+        <div class="bg-white rounded-xl max-w-4xl w-full mx-4 p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold text-gray-800">Newsletter Mensal - Estatísticas</h2>
+                <button onclick="hideModal('campaignStatsModal')" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Enviados</p>
+                    <p class="text-2xl font-bold text-gray-800">2,847</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Abertos</p>
+                    <p class="text-2xl font-bold text-gray-800">1,951</p>
+                    <p class="text-xs text-green-600">68.5%</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Cliques</p>
+                    <p class="text-2xl font-bold text-gray-800">892</p>
+                    <p class="text-xs text-green-600">31.3%</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Reclamações</p>
+                    <p class="text-2xl font-bold text-gray-800">3</p>
+                    <p class="text-xs text-red-600">0.1%</p>
+                </div>
+            </div>
+
+            <!-- Gráfico Simulado -->
+            <div class="mb-6">
+                <h3 class="font-semibold text-gray-800 mb-3">Aberturas por horário</h3>
+                <div class="h-40 flex items-end space-x-2">
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 40px"></div>
+                        <span class="text-xs mt-2">00h</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 65px"></div>
+                        <span class="text-xs mt-2">04h</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 120px"></div>
+                        <span class="text-xs mt-2">08h</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 180px"></div>
+                        <span class="text-xs mt-2">12h</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 150px"></div>
+                        <span class="text-xs mt-2">16h</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-blue-500 rounded-t-lg" style="height: 90px"></div>
+                        <span class="text-xs mt-2">20h</span>
                     </div>
                 </div>
             </div>
 
-            <!-- To -->
-            <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Para</label>
-                <input type="email" placeholder="email@exemplo.com" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-            </div>
-
-            <!-- Subject -->
-            <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Assunto</label>
-                <input type="text" placeholder="Digite o assunto" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-            </div>
-
-            <!-- Template Select -->
-            <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Template</label>
-                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-                    <option>Sem template</option>
-                    <option>Newsletter Padrão</option>
-                    <option>Promoção de Vendas</option>
-                </select>
-            </div>
-
-            <!-- Editor -->
-            <div class="mb-4">
-                <div class="border border-gray-300 rounded-t-lg bg-gray-50 p-2 flex space-x-2">
-                    <button class="p-1 hover:bg-gray-200 rounded">B</button>
-                    <button class="p-1 hover:bg-gray-200 rounded italic">I</button>
-                    <button class="p-1 hover:bg-gray-200 rounded underline">U</button>
-                </div>
-                <textarea rows="8" class="w-full px-3 py-2 border border-t-0 border-gray-300 rounded-b-lg" placeholder="Digite seu e-mail..."></textarea>
-            </div>
-
-            <!-- Variables -->
-            <div class="mb-4">
-                <p class="text-sm font-medium text-gray-700 mb-2">Variáveis</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-gray-100 rounded-full text-sm cursor-pointer hover:bg-gray-200">{{nome}}</span>
-                    <span class="px-3 py-1 bg-gray-100 rounded-full text-sm cursor-pointer hover:bg-gray-200">{{email}}</span>
-                    <span class="px-3 py-1 bg-gray-100 rounded-full text-sm cursor-pointer hover:bg-gray-200">{{empresa}}</span>
-                </div>
-            </div>
-
-            <!-- Schedule -->
-            <div class="border-t pt-4">
-                <label class="flex items-center space-x-2">
-                    <input type="checkbox" class="rounded text-blue-600">
-                    <span class="text-sm">Agendar envio</span>
-                </label>
-            </div>
-        </div>
-    </div>
-</template>
-
-<!-- Lista de Contatos -->
-<template id="contactsTemplate">
-    <div>
-        <div class="flex justify-between items-center mb-6">
+            <!-- Links mais clicados -->
             <div>
-                <h1 class="text-2xl font-bold text-gray-800">Contatos</h1>
-                <p class="text-gray-600">Gerencie sua lista de contatos</p>
+                <h3 class="font-semibold text-gray-800 mb-3">Links mais clicados</h3>
+                <div class="space-y-2">
+                    <div class="flex justify-between p-3 bg-gray-50 rounded">
+                        <span class="text-sm">https://seusite.com/promocao</span>
+                        <span class="text-sm font-bold">342 cliques</span>
+                    </div>
+                    <div class="flex justify-between p-3 bg-gray-50 rounded">
+                        <span class="text-sm">https://seusite.com/novidades</span>
+                        <span class="text-sm font-bold">187 cliques</span>
+                    </div>
+                </div>
             </div>
-            <div class="flex space-x-3">
-                <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
-                    </svg>
-                    <span>Importar</span>
-                </button>
-                <button onclick="showContactModal()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2">
+        </div>
+    </div>
+
+    <!-- ==================== CONTEÚDOS DINÂMICOS ==================== -->
+
+    <!-- Dashboard -->
+    <template id="dashboardTemplate">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">Dashboard</h1>
+            <p class="text-gray-600 mb-6">Bem-vindo de volta! Aqui está seu resumo</p>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium text-green-600 bg-green-100 px-2 py-1 rounded">+12.5%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">15,243</h3>
+                    <p class="text-gray-600 text-sm">E-mails Enviados</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                </path>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium text-green-600 bg-green-100 px-2 py-1 rounded">+5.2%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">68.5%</h3>
+                    <p class="text-gray-600 text-sm">Taxa de Abertura</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium text-green-600 bg-green-100 px-2 py-1 rounded">+32</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">3,482</h3>
+                    <p class="text-gray-600 text-sm">Contatos</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">5</h3>
+                    <p class="text-gray-600 text-sm">Campanhas Ativas</p>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <h3 class="font-semibold text-gray-800 mb-4">Atividade Recente</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium">Newsletter Mensal</p>
+                                <p class="text-sm text-gray-600">Enviado há 2 dias • 1,245 abertos</p>
+                            </div>
+                        </div>
+                        <span class="text-sm text-green-600">68%</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium">Promoção Verão</p>
+                                <p class="text-sm text-gray-600">Enviado há 5 dias • 2,801 abertos</p>
+                            </div>
+                        </div>
+                        <span class="text-sm text-green-600">72%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Compositor de E-mail -->
+    <template id="composerTemplate">
+        <div>
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-bold text-gray-800">Novo E-mail</h1>
+                <div class="flex space-x-3">
+                    <button
+                        class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4">
+                            </path>
+                        </svg>
+                        <span>Salvar Rascunho</span>
+                    </button>
+                    <button
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                        <span>Enviar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 max-w-4xl">
+                <!-- From -->
+                <div class="mb-4 p-3 bg-gray-50 rounded-lg">
+                    <div class="flex items-center space-x-3">
+                        <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=0ea5e9&color=fff"
+                            class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="text-sm font-medium">João Silva</p>
+                            <p class="text-xs text-gray-600">joao.silva@gmail.com (via Gmail)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- To -->
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Para</label>
+                    <input type="email" placeholder="email@exemplo.com"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                </div>
+
+                <!-- Subject -->
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Assunto</label>
+                    <input type="text" placeholder="Digite o assunto"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                </div>
+
+                <!-- Template Select -->
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Template</label>
+                    <select class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                        <option>Sem template</option>
+                        <option>Newsletter Padrão</option>
+                        <option>Promoção de Vendas</option>
+                    </select>
+                </div>
+
+                <!-- Editor -->
+                <div class="mb-4">
+                    <div class="border border-gray-300 rounded-t-lg bg-gray-50 p-2 flex space-x-2">
+                        <button class="p-1 hover:bg-gray-200 rounded">B</button>
+                        <button class="p-1 hover:bg-gray-200 rounded italic">I</button>
+                        <button class="p-1 hover:bg-gray-200 rounded underline">U</button>
+                    </div>
+                    <textarea rows="8" class="w-full px-3 py-2 border border-t-0 border-gray-300 rounded-b-lg"
+                        placeholder="Digite seu e-mail..."></textarea>
+                </div>
+
+                <!-- Variables -->
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-700 mb-2">Variáveis</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="px-3 py-1 bg-gray-100 rounded-full text-sm cursor-pointer hover:bg-gray-200">{{nome}}</span>
+                        <span
+                            class="px-3 py-1 bg-gray-100 rounded-full text-sm cursor-pointer hover:bg-gray-200">{{email}}</span>
+                        <span
+                            class="px-3 py-1 bg-gray-100 rounded-full text-sm cursor-pointer hover:bg-gray-200">{{empresa}}</span>
+                    </div>
+                </div>
+
+                <!-- Schedule -->
+                <div class="border-t pt-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" class="rounded text-blue-600">
+                        <span class="text-sm">Agendar envio</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Lista de Contatos -->
+    <template id="contactsTemplate">
+        <div>
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">Contatos</h1>
+                    <p class="text-gray-600">Gerencie sua lista de contatos</p>
+                </div>
+                <div class="flex space-x-3">
+                    <button
+                        class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                        </svg>
+                        <span>Importar</span>
+                    </button>
+                    <button onclick="showContactModal()"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
+                            </path>
+                        </svg>
+                        <span>Novo Contato</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 mb-6">
+                <input type="text" placeholder="Buscar contatos..."
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+            </div>
+
+            <!-- Contacts Table -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-gray-50 border-b">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nome</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Empresa</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Grupo</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y">
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <span class="text-sm font-medium text-blue-600">AS</span>
+                                    </div>
+                                    <span class="text-sm font-medium">Ana Silva</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-sm">ana.silva@email.com</td>
+                            <td class="px-6 py-4 text-sm">Tech Solutions</td>
+                            <td class="px-6 py-4">
+                                <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Clientes</span>
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-2">
+                                <button class="text-gray-400 hover:text-blue-600">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                        <span class="text-sm font-medium text-green-600">CS</span>
+                                    </div>
+                                    <span class="text-sm font-medium">Carlos Souza</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-sm">carlos@email.com</td>
+                            <td class="px-6 py-4 text-sm">Inovação Ltda</td>
+                            <td class="px-6 py-4">
+                                <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Leads</span>
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-2">
+                                <button class="text-gray-400 hover:text-blue-600">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- Templates -->
+    <template id="templatesTemplate">
+        <div>
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">Templates</h1>
+                    <p class="text-gray-600">Modelos de e-mail para reutilizar</p>
+                </div>
+                <button
+                    class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>
-                    <span>Novo Contato</span>
+                    <span>Novo Template</span>
                 </button>
             </div>
-        </div>
 
-        <!-- Search -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 mb-6">
-            <input type="text" placeholder="Buscar contatos..." class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-        </div>
-
-        <!-- Contacts Table -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-            <table class="w-full">
-                <thead class="bg-gray-50 border-b">
-                    <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nome</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Empresa</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Grupo</th>
-                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Ações</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y">
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                                    <span class="text-sm font-medium text-blue-600">AS</span>
-                                </div>
-                                <span class="text-sm font-medium">Ana Silva</span>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 text-sm">ana.silva@email.com</td>
-                        <td class="px-6 py-4 text-sm">Tech Solutions</td>
-                        <td class="px-6 py-4">
-                            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Clientes</span>
-                        </td>
-                        <td class="px-6 py-4 text-right space-x-2">
-                            <button class="text-gray-400 hover:text-blue-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+                <!-- Template 1 -->
+                <div
+                    class="border border-indigo-300 rounded-2xl shadow-sm hover:shadow-lg transition bg-white p-6 max-w-md">
+                    <!-- Cabeçalho do Grupo -->
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <!-- Ícone do grupo -->
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z">
+                                    </path>
                                 </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                                    <span class="text-sm font-medium text-green-600">CS</span>
-                                </div>
-                                <span class="text-sm font-medium">Carlos Souza</span>
                             </div>
-                        </td>
-                        <td class="px-6 py-4 text-sm">carlos@email.com</td>
-                        <td class="px-6 py-4 text-sm">Inovação Ltda</td>
-                        <td class="px-6 py-4">
-                            <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Leads</span>
-                        </td>
-                        <td class="px-6 py-4 text-right space-x-2">
-                            <button class="text-gray-400 hover:text-blue-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                            <!-- Nome do Grupo e quantidade -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">Marketing Digital</h3>
+                                <p class="text-sm text-gray-500">12 contatos</p>
+                            </div>
+                        </div>
+                        <!-- Status do grupo -->
+                        <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Ativo</span>
+                    </div>
+
+                    <!-- Informações do Grupo -->
+                    <div class="space-y-3">
+                        <!-- Email do grupo -->
+                        <div class="flex items-center text-sm">
+                            <span class="text-gray-500 w-20">Email:</span>
+                            <span class="text-gray-800 font-medium">marketing@empresa.com</span>
+                        </div>
+
+                        <!-- Descrição -->
+                        <div class="flex items-start text-sm">
+                            <span class="text-gray-500 w-20">Descrição:</span>
+                            <span class="text-gray-600">Equipe de marketing e comunicações</span>
+                        </div>
+
+                    </div>
+                    <!-- Data de criação -->
+                    <div class="flex items-center text-xs text-gray-400 pt-2">
+                        <span>Criado em: 15/03/2024</span>
+                    </div>
+                </div>
+
+                <div
+                    class="border border-green-300 rounded-2xl shadow-sm hover:shadow-lg transition bg-white p-6 max-w-md">
+                    <!-- Cabeçalho do Grupo -->
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <!-- Ícone do grupo -->
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z">
+                                    </path>
                                 </svg>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</template>
+                            </div>
+                            <!-- Nome do Grupo e quantidade -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">Marketing Digital</h3>
+                                <p class="text-sm text-gray-500">12 contatos</p>
+                            </div>
+                        </div>
+                        <!-- Status do grupo -->
+                        <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Ativo</span>
+                    </div>
 
-<!-- Templates -->
-<template id="templatesTemplate">
-    <div>
-        <div class="flex justify-between items-center mb-6">
-            <div>
-                <h1 class="text-2xl font-bold text-gray-800">Templates</h1>
-                <p class="text-gray-600">Modelos de e-mail para reutilizar</p>
-            </div>
-            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                </svg>
-                <span>Novo Template</span>
-            </button>
-        </div>
+                    <!-- Informações do Grupo -->
+                    <div class="space-y-3">
+                        <!-- Email do grupo -->
+                        <div class="flex items-center text-sm">
+                            <span class="text-gray-500 w-20">Email:</span>
+                            <span class="text-gray-800 font-medium">marketing@empresa.com</span>
+                        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Template 1 -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition cursor-pointer">
-                <div class="h-32 bg-gradient-to-r from-blue-500 to-blue-700 p-4">
-                    <h3 class="text-white font-semibold">Newsletter Padrão</h3>
-                    <p class="text-blue-100 text-sm">Usado 245 vezes</p>
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-end space-x-2">
-                        <button class="p-2 text-gray-400 hover:text-blue-600 rounded-lg hover:bg-gray-100">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-                            </svg>
-                        </button>
-                        <button class="p-2 text-gray-400 hover:text-blue-600 rounded-lg hover:bg-gray-100">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                            </svg>
-                        </button>
+                        <!-- Descrição -->
+                        <div class="flex items-start text-sm">
+                            <span class="text-gray-500 w-20">Descrição:</span>
+                            <span class="text-gray-600">Equipe de marketing e comunicações</span>
+                        </div>
+
+                    </div>
+                    <!-- Data de criação -->
+                    <div class="flex items-center text-xs text-gray-400 pt-2">
+                        <span>Criado em: 15/03/2024</span>
                     </div>
                 </div>
-            </div>
 
-            <!-- Template 2 -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition cursor-pointer">
-                <div class="h-32 bg-gradient-to-r from-purple-500 to-purple-700 p-4">
-                    <h3 class="text-white font-semibold">Promoção de Vendas</h3>
-                    <p class="text-purple-100 text-sm">Usado 128 vezes</p>
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-end space-x-2">
-                        <button class="p-2 text-gray-400 hover:text-purple-600 rounded-lg hover:bg-gray-100">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-                            </svg>
-                        </button>
-                        <button class="p-2 text-gray-400 hover:text-purple-600 rounded-lg hover:bg-gray-100">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Template 3 -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition cursor-pointer">
-                <div class="h-32 bg-gradient-to-r from-green-500 to-green-700 p-4">
-                    <h3 class="text-white font-semibold">Boas Vindas</h3>
-                    <p class="text-green-100 text-sm">Usado 89 vezes</p>
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-end space-x-2">
-                        <button class="p-2 text-gray-400 hover:text-green-600 rounded-lg hover:bg-gray-100">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-                            </svg>
-                        </button>
-                        <button class="p-2 text-gray-400 hover:text-green-600 rounded-lg hover:bg-gray-100">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
-</template>
-
-<!-- Campanhas -->
-<template id="campaignsTemplate">
-    <div>
-        <div class="flex justify-between items-center mb-6">
-            <div>
-                <h1 class="text-2xl font-bold text-gray-800">Campanhas</h1>
-                <p class="text-gray-600">Gerencie seus disparos em massa</p>
-            </div>
-            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                </svg>
-                <span>Nova Campanha</span>
-            </button>
         </div>
+    </template>
 
-        <div class="grid grid-cols-1 gap-4">
-            <!-- Campaign 1 -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-lg transition cursor-pointer" onclick="showCampaignStats()">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="font-semibold text-gray-800">Newsletter Mensal - Dezembro</h3>
-                        <p class="text-sm text-gray-600 mt-1">Enviada em 10/12/2023 • 2,847 destinatários</p>
-                    </div>
-                    <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Concluída</span>
+    <!-- Campanhas -->
+    <template id="campaignsTemplate">
+        <div>
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">Campanhas</h1>
+                    <p class="text-gray-600">Gerencie seus disparos em massa</p>
                 </div>
-                <div class="mt-4 grid grid-cols-3 gap-4">
-                    <div>
-                        <p class="text-xs text-gray-500">Abertos</p>
-                        <p class="text-lg font-semibold">1,951 <span class="text-xs text-green-600">(68.5%)</span></p>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500">Cliques</p>
-                        <p class="text-lg font-semibold">892 <span class="text-xs text-green-600">(31.3%)</span></p>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500">Reclamações</p>
-                        <p class="text-lg font-semibold">3 <span class="text-xs text-red-600">(0.1%)</span></p>
-                    </div>
-                </div>
+                <button
+                    class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <span>Nova Campanha</span>
+                </button>
             </div>
 
-            <!-- Campaign 2 -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-lg transition cursor-pointer" onclick="showCampaignStats()">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="font-semibold text-gray-800">Promoção Black Friday</h3>
-                        <p class="text-sm text-gray-600 mt-1">Enviada em 25/11/2023 • 5,234 destinatários</p>
+            <div class="grid grid-cols-1 gap-4">
+                <!-- Campaign 1 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-lg transition cursor-pointer"
+                    onclick="showCampaignStats()">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-gray-800">Newsletter Mensal - Dezembro</h3>
+                            <p class="text-sm text-gray-600 mt-1">Enviada em 10/12/2023 • 2,847 destinatários</p>
+                        </div>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Concluída</span>
                     </div>
-                    <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Concluída</span>
+                    <div class="mt-4 grid grid-cols-3 gap-4">
+                        <div>
+                            <p class="text-xs text-gray-500">Abertos</p>
+                            <p class="text-lg font-semibold">1,951 <span class="text-xs text-green-600">(68.5%)</span>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Cliques</p>
+                            <p class="text-lg font-semibold">892 <span class="text-xs text-green-600">(31.3%)</span></p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Reclamações</p>
+                            <p class="text-lg font-semibold">3 <span class="text-xs text-red-600">(0.1%)</span></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="mt-4 grid grid-cols-3 gap-4">
-                    <div>
-                        <p class="text-xs text-gray-500">Abertos</p>
-                        <p class="text-lg font-semibold">3,821 <span class="text-xs text-green-600">(73%)</span></p>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500">Cliques</p>
-                        <p class="text-lg font-semibold">1,892 <span class="text-xs text-green-600">(36.1%)</span></p>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500">Reclamações</p>
-                        <p class="text-lg font-semibold">5 <span class="text-xs text-red-600">(0.09%)</span></p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Campaign 3 (Em andamento) -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="font-semibold text-gray-800">Promoção Verão 2024</h3>
-                        <p class="text-sm text-gray-600 mt-1">Em andamento • Enviando para 3,482 contatos</p>
+                <!-- Campaign 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-lg transition cursor-pointer"
+                    onclick="showCampaignStats()">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-gray-800">Promoção Black Friday</h3>
+                            <p class="text-sm text-gray-600 mt-1">Enviada em 25/11/2023 • 5,234 destinatários</p>
+                        </div>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Concluída</span>
                     </div>
-                    <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-sm rounded-full">Em andamento</span>
+                    <div class="mt-4 grid grid-cols-3 gap-4">
+                        <div>
+                            <p class="text-xs text-gray-500">Abertos</p>
+                            <p class="text-lg font-semibold">3,821 <span class="text-xs text-green-600">(73%)</span></p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Cliques</p>
+                            <p class="text-lg font-semibold">1,892 <span class="text-xs text-green-600">(36.1%)</span>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Reclamações</p>
+                            <p class="text-lg font-semibold">5 <span class="text-xs text-red-600">(0.09%)</span></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="mt-4">
-                    <div class="flex justify-between text-sm mb-1">
-                        <span>Progresso</span>
-                        <span>1,245 / 3,482 (35%)</span>
+
+                <!-- Campaign 3 (Em andamento) -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-gray-800">Promoção Verão 2024</h3>
+                            <p class="text-sm text-gray-600 mt-1">Em andamento • Enviando para 3,482 contatos</p>
+                        </div>
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-sm rounded-full">Em andamento</span>
                     </div>
-                    <div class="w-full bg-gray-200 rounded-full h-2">
-                        <div class="bg-blue-600 h-2 rounded-full" style="width: 35%"></div>
+                    <div class="mt-4">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>Progresso</span>
+                            <span>1,245 / 3,482 (35%)</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-blue-600 h-2 rounded-full" style="width: 35%"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</template>
+    </template>
 
-<!-- JavaScript para controle dinâmico -->
-<script>
-    function showDashboard() {
-        const template = document.getElementById('dashboardTemplate');
-        const content = template.content.cloneNode(true);
-        const mainContent = document.getElementById('mainContent');
-        mainContent.innerHTML = '';
-        mainContent.appendChild(content);
-    }
+    <!-- JavaScript para controle dinâmico -->
+    <script>
+        function showDashboard() {
+            const template = document.getElementById('dashboardTemplate');
+            const content = template.content.cloneNode(true);
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = '';
+            mainContent.appendChild(content);
+        }
 
-    function showComposer() {
-        const template = document.getElementById('composerTemplate');
-        const content = template.content.cloneNode(true);
-        const mainContent = document.getElementById('mainContent');
-        mainContent.innerHTML = '';
-        mainContent.appendChild(content);
-    }
+        function showComposer() {
+            const template = document.getElementById('composerTemplate');
+            const content = template.content.cloneNode(true);
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = '';
+            mainContent.appendChild(content);
+        }
 
-    function showContacts() {
-        const template = document.getElementById('contactsTemplate');
-        const content = template.content.cloneNode(true);
-        const mainContent = document.getElementById('mainContent');
-        mainContent.innerHTML = '';
-        mainContent.appendChild(content);
-    }
+        function showContacts() {
+            const template = document.getElementById('contactsTemplate');
+            const content = template.content.cloneNode(true);
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = '';
+            mainContent.appendChild(content);
+        }
 
-    function showTemplates() {
-        const template = document.getElementById('templatesTemplate');
-        const content = template.content.cloneNode(true);
-        const mainContent = document.getElementById('mainContent');
-        mainContent.innerHTML = '';
-        mainContent.appendChild(content);
-    }
+        function showTemplates() {
+            const template = document.getElementById('templatesTemplate');
+            const content = template.content.cloneNode(true);
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = '';
+            mainContent.appendChild(content);
+        }
 
-    function showCampaigns() {
-        const template = document.getElementById('campaignsTemplate');
-        const content = template.content.cloneNode(true);
-        const mainContent = document.getElementById('mainContent');
-        mainContent.innerHTML = '';
-        mainContent.appendChild(content);
-    }
+        function showCampaigns() {
+            const template = document.getElementById('campaignsTemplate');
+            const content = template.content.cloneNode(true);
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = '';
+            mainContent.appendChild(content);
+        }
 
-    function showGmailModal() {
-        document.getElementById('gmailModal').classList.remove('hidden');
-    }
+        function showGmailModal() {
+            document.getElementById('gmailModal').classList.remove('hidden');
+        }
 
-    function showContactModal() {
-        document.getElementById('contactModal').classList.remove('hidden');
-    }
+        function showContactModal() {
+            document.getElementById('contactModal').classList.remove('hidden');
+        }
 
-    function showCampaignStats() {
-        document.getElementById('campaignStatsModal').classList.remove('hidden');
-    }
+        function showCampaignStats() {
+            document.getElementById('campaignStatsModal').classList.remove('hidden');
+        }
 
-    function hideModal(modalId) {
-        document.getElementById(modalId).classList.add('hidden');
-    }
+        function hideModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
 
-    // Iniciar com Dashboard
-    window.onload = function() {
-        showDashboard();
-        
-        // Fechar modais com ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.fixed').forEach(modal => {
-                    modal.classList.add('hidden');
-                });
-            }
-        });
-    }
-</script>
+        // Iniciar com Dashboard
+        window.onload = function () {
+            showDashboard();
+
+            // Fechar modais com ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.fixed').forEach(modal => {
+                        modal.classList.add('hidden');
+                    });
+                }
+            });
+        }
+    </script>
 
 </body>
+
 </html>
