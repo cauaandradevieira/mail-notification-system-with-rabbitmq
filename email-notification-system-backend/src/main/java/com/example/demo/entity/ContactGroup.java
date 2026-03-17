@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.time.Instant;
 
 @Entity
-@Table(name = "contact_has_group")
+@Table(name = "contact_group")
 @Getter
 @Setter
 public class ContactGroup {
