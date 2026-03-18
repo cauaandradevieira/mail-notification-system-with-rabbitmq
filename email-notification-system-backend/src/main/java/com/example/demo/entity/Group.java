@@ -8,7 +8,7 @@ import java.time.Instant;
 import java.util.List;
 
 @Entity
-@Table(name = "contact_group")
+@Table(name = "groups")
 @Getter
 @Setter
 public class Group {
@@ -16,6 +16,7 @@ public class Group {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String name;
 
     @Column(name = "created_at")
@@ -23,6 +24,8 @@ public class Group {
 
     @Column(name = "updated_at")
     private Instant updatedAt;
+
+    private String color;
 
     @OneToMany(mappedBy = "group")
     private List<ContactGroup> contactGroupList;
