@@ -1,14 +1,14 @@
 package com.example.demo.services.relation;
 
-import com.example.demo.dto.contact.response.ContactResponse;
-import com.example.demo.dto.contact_group.request.ContactGroupRequest;
-import com.example.demo.dto.contact_group.response.ContactGroupResponse;
-import com.example.demo.dto.contact_group.response.ContactsWithGroupResponse;
-import com.example.demo.dto.group.request.GroupRequest;
-import com.example.demo.dto.group.response.GroupResponse;
+import com.example.demo.dto.contact_group.projections.GroupsWithContactsQuantityProjection;
+import com.example.demo.dto.contact_group.request.GroupContactRequest;
+import com.example.demo.dto.contact_group.response.GroupWithContactsResponse;
+import com.example.demo.dto.contact_group.response.GroupsWithContactsQuantityDTO;
 import com.example.demo.entity.Contact;
 import com.example.demo.entity.ContactGroup;
 import com.example.demo.entity.Group;
+import com.example.demo.error.enums.GroupError;
+import com.example.demo.error.exceptions.group.GroupNotFoundException;
 import com.example.demo.mapper.ContactGroupMapper;
 import com.example.demo.repository.ContactGroupRepository;
 import com.example.demo.services.ContactService;
@@ -30,7 +30,7 @@ public class ContactGroupService {
     private final ContactGroupMapper contactGroupMapper;
 
     @Transactional
-    public void save(ContactGroupRequest request)
+    public void save(GroupContactRequest request)
     {
         List<Contact> contactList = contactService.findAllById(request.contactIdList());
         Group group = groupService.findByIdToEntity(request.groupId());
@@ -49,15 +49,22 @@ public class ContactGroupService {
         contactGroupRepository.saveAll(contactGroupList);
     }
 
-    public ContactsWithGroupResponse findAllContactsByGroupId(Long groupId)
+    public GroupWithContactsResponse findAllContactsByGroupId(Long groupId)
     {
         List<ContactGroup> contactList = contactGroupRepository.findAllContactsByGroupId(groupId);
 
         if(contactList.isEmpty())
         {
-            throw new RuntimeException("Grupo de contatos não encontrado.");
+            throw new GroupNotFoundException(GroupError.GROUP_NOT_FOUND);
         }
 
-        return contactGroupMapper.toContactsWithGroupDto(contactList);
+        return contactGroupMapper.toGroupWithContactsDTO(contactList);
+    }
+
+    public List<GroupsWithContactsQuantityDTO> findAllGroupsWithContactsQuantity()
+    {
+        List<GroupsWithContactsQuantityProjection> projection = contactGroupRepository.findAllGroupsWithContactsQuantity();
+
+        return contactGroupMapper.toGroupsWithContactsQuantityDTO(projection);
     }
 }
