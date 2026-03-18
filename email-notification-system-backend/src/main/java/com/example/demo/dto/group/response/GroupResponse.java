@@ -8,6 +8,7 @@ import java.time.Instant;
 public record GroupResponse(
         Long id,
         String name,
+        String color,
         Instant createdAt,
         Instant updatedAt
 ) {
