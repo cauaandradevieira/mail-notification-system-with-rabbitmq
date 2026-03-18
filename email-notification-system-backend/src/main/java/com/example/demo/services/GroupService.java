@@ -3,9 +3,12 @@ package com.example.demo.services;
 import com.example.demo.dto.group.request.GroupRequest;
 import com.example.demo.dto.group.response.GroupResponse;
 import com.example.demo.entity.Group;
+import com.example.demo.error.enums.GroupError;
+import com.example.demo.error.exceptions.group.GroupNotFoundException;
 import com.example.demo.mapper.GroupMapper;
 import com.example.demo.repository.GroupRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -18,9 +21,17 @@ public class GroupService {
     private final GroupRepository groupRepository;
     private final GroupMapper groupMapper;
 
-    public GroupResponse create(GroupRequest request) {
+    public GroupResponse create(GroupRequest request)
+    {
 
         Group group = groupMapper.toEntity(request);
+
+        boolean groupExists = groupRepository.existsByName(group.getName());
+
+        if(groupExists)
+        {
+            // throw new GroupNotExistsException(GroupError.GROUP_NOT_FOUND);
+        }
 
         group.setCreatedAt(Instant.now());
         group.setUpdatedAt(Instant.now());
@@ -40,7 +51,7 @@ public class GroupService {
     public Group findByIdToEntity(Long id) {
 
         return groupRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Grupo de contatos não encontrado"));
+                .orElseThrow(() -> new GroupNotFoundException(GroupError.GROUP_NOT_FOUND));
     }
 
     public GroupResponse findById(Long id) {
@@ -55,6 +66,7 @@ public class GroupService {
         Group existing = findByIdToEntity(id);
 
         existing.setName(request.name());
+        existing.setColor(request.color());
         existing.setUpdatedAt(Instant.now());
 
         Group updated = groupRepository.save(existing);
