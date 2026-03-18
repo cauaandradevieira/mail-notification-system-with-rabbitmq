@@ -1,7 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.dto.contact.response.ContactResponse;
-import com.example.demo.entity.Contact;
+import com.example.demo.dto.contact_group.projections.GroupsWithContactsQuantityProjection;
 import com.example.demo.entity.ContactGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +17,20 @@ public interface ContactGroupRepository extends JpaRepository<ContactGroup,Long>
             "JOIN FETCH cg.contact AS contact " +
             "WHERE group.id = :groupId")
     List<ContactGroup> findAllContactsByGroupId(@Param("groupId") Long groupId);
+
+    @Query("SELECT cg FROM ContactGroup AS cg " +
+            "JOIN FETCH cg.group AS group " +
+            "JOIN FETCH cg.contact AS contact ")
+    List<ContactGroup> findAllGroupsWithContacts();
+
+    @Query("""
+            SELECT
+                g AS group,
+                COUNT(cg.contact) AS contactQuantity
+            FROM Group AS g
+            LEFT JOIN ContactGroup AS cg ON cg.group = g
+            GROUP BY g
+            """)
+    List<GroupsWithContactsQuantityProjection> findAllGroupsWithContactsQuantity();
+
 }
