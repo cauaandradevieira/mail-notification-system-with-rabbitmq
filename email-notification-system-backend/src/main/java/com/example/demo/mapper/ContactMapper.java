@@ -17,6 +17,7 @@ public class ContactMapper {
         return ContactResponse.builder()
                 .id(contact.getId())
                 .email(contact.getEmail())
+                .name(contact.getName())
                 .telephone(contact.getTelephone())
                 .createdAt(contact.getCreatedAt())
                 .updatedAt(contact.getUpdatedAt())
