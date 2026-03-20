@@ -1,6 +1,7 @@
 package com.example.demo.rabbit.listener;
 
 import com.example.demo.dto.email.request.EmailRequest;
+import com.example.demo.rabbit.message.EmailMessage;
 import com.example.demo.services.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -13,9 +14,8 @@ public class EmailListener
     private final EmailService emailService;
 
     @RabbitListener(queues = "email.queue")
-    public void send(EmailRequest request)
+    public void send(EmailMessage message)
     {
-        System.out.println("enviando email para o " + request.to());
-        emailService.send(request);
+        emailService.send(message);
     }
 }

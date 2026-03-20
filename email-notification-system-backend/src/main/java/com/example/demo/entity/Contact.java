@@ -5,9 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.List;
 
 @Entity
-@Table(name = "contact")
+@Table(name = "contacts")
 @Getter
 @Setter
 public class Contact {
@@ -15,6 +16,7 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String name;
 
     private String telephone;
@@ -26,4 +28,8 @@ public class Contact {
 
     @Column(name = "updated_at")
     private Instant updatedAt;
+
+    @OneToMany(mappedBy = "contact")
+    private List<ContactGroup> contactGroupList;
+
 }
